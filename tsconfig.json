@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"outFile": "_built/app.js",
+
+		"module": "none",
+
+		"alwaysStrict": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"allowUnreachableCode": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": false
+	},
+	"include": [
+		"src/**/*"
+	],
+	"files": [
+		"./definitions/pixi.js.d.ts"
+	]
+}
