@@ -6,8 +6,14 @@ document.body.appendChild(app.renderer.view);
 
 let stage = new PIXI.Container();
 
-// let texture = PIXI.Texture.fromImage('assets/test-map.jpg');
-let texture = PIXI.Texture.fromVideo('assets/planet-earth.mp4');
+// let texture = PIXI.Texture.fromImage('assets/image.jpg');
+let videoEl = document.createElement('video');
+videoEl.src = 'assets/demo.mp4';
+videoEl.autoplay = true;
+videoEl.muted = true;
+videoEl.defaultMuted = true;
+videoEl.volume = 0;
+let texture = PIXI.Texture.fromVideo(videoEl);
 let videoSprite = new PIXI.Sprite(texture);
 videoSprite.width = w;
 videoSprite.height = h;

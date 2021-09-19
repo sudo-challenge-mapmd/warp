@@ -1,9 +1,14 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -14,8 +19,14 @@ var h = window.innerHeight;
 var app = new PIXI.Application(w, h, { transparent: false, backgroundColor: 0x00FF00 });
 document.body.appendChild(app.renderer.view);
 var stage = new PIXI.Container();
-// let texture = PIXI.Texture.fromImage('assets/test-map.jpg');
-var texture = PIXI.Texture.fromVideo('assets/planet-earth.mp4');
+// let texture = PIXI.Texture.fromImage('assets/image.jpg');
+var videoEl = document.createElement('video');
+videoEl.src = 'assets/demo.mp4';
+videoEl.autoplay = true;
+videoEl.muted = true;
+videoEl.defaultMuted = true;
+videoEl.volume = 0;
+var texture = PIXI.Texture.fromVideo(videoEl);
 var videoSprite = new PIXI.Sprite(texture);
 videoSprite.width = w;
 videoSprite.height = h;
@@ -67,4 +78,4 @@ var BarrelFilter = /** @class */ (function (_super) {
     return BarrelFilter;
 }(PIXI.Filter));
 videoSprite.filters = [visionMapFilter, new BarrelFilter()];
-// app.renderer.render(stage); 
+// app.renderer.render(stage);
