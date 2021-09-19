@@ -13,6 +13,7 @@ videoEl.autoplay = true;
 videoEl.muted = true;
 videoEl.defaultMuted = true;
 videoEl.volume = 0;
+videoEl.loop = true;
 let texture = PIXI.Texture.fromVideo(videoEl);
 let videoSprite = new PIXI.Sprite(texture);
 videoSprite.width = w;
